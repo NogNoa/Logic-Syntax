@@ -1,27 +1,22 @@
 Objects:
-O		# A simple Object.
-OεS		# An object that is in S.
+O		    # A simple Object.
+X       # A variable for Objects.
+X|S		  # An object that is in S.
+\A\ X|S # Any object in S
 
-Quality:
-Q			# A simple Quality
 
 Sets:
-S		  # A simple Set
-{Q}		# The set of all objects that have the quality Q
-{S|Q} # The set of all objects in S that have Q
-SחS   # The set of all objects that are in both S and S
-S:P 	# The set of object that are in S, and for which P is ‎True.
-
-
+S		    # A simple Set
+{O}     # The set that includes O and only it.
+SחS     # The set of all objects that are in both S and S
+S:P 	  # The set of all objects that are in S, and for which P is ‎True.
 
 Propositions:
-O;P 	# Claiming that for object O, P is true.
-\A\ S:P	# Claiming that for any object in S, P is true.
-\E\ O	# Claiming that an object O exists.
+O;P 	  # Claiming that for object O, P is true.
+OεS     # Claimint that O is in S
+\E\ O	  # Claiming that an object O exists.
 P /=> P # Claiming that if P than P.
 P <=> P # Claiming that P if and only if P.
-
-
 
 Moods:
 LET {O} 	   # Introducing O. Existance is imperativly implied.
