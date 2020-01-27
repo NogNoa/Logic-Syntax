@@ -1,13 +1,13 @@
 Objects:
 O		# A simple Object.
-O:P 	# An object that is O, and for which P is claimed.
+O:P # An object that is O, and for which P is claimed.
 
 Sets:
-S		# A simple Set
+S		  # A simple Set
 {O}		# The set of objects that are O
 \A\ O	# The set of all objects that are O.
 
-	
+
 Propositions:
 O;P 	# A proposition that for object that is O, P is true.
 OεS		# An object that is O is in S.
@@ -19,17 +19,18 @@ P <=> P # A proposition that P if and only if P.
 
 Moods:
 LET {O} 	   # Introducing O. Existance is imperativly implied.
-LET {P} 	   # Imperativly claiming P. 
+LET {P} 	   # Imperativly claiming P.
 DEF {O|P}	   # Introducing O as the object for which P is True. Existance is imperativly implied.
-{P} 		   # Claiming P, relying on what was already Known.
-ASM {P} name   # Introducing P as assumption without claiming it. P get a name.
+{P} 		   	 # Claiming P, relying on what was already Known.
+PRV {P}		   # expect everything until QED to be what P is relying on, i.e the proof for P.
+ASM {P} name # Introducing P as assumption without claiming it. P get a name.
 SUP {P}		   # Claiming P, relying on all preceding assumptions. If a preceding assumption is found False, P is automaticly discarded.
-SUP {P} name   # Claiming P, relying on an assumption. If the assumption is found False, P is automaticly discarded.
+SUP {P} name # Claiming P, relying on a named assumption. If the assumption is found False, P is automaticly discarded.
 CNT {P}		   # Concluding that P is a contradiction. expects next line to claim an assumption False.
 FLS name	   # an assumption is False.
-PRV {P}		   # expect everything until QED to be what P is relying on, i.e the proof for P.
-QED			   # End of proof. P is claimed and everything inside the proof is discarded.
-NTT {P}		   # Imperativly introducing another way to refer to object already introduced.			
+QED			     # End of proof. P in the PRV statement is claimed and every assumption inside the proof is discarded.
+CRL {P}			 # After QED, claiming a proposition as vorollary from the proof, thus saving it from being discarded.
+NTT {P}		   # Imperativly introducing an equivalent way to refer to object already introduced.
 
 Order of Operations:
 Mathematical operators before logical.
