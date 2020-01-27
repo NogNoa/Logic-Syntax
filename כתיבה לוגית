@@ -1,21 +1,22 @@
 Objects:
-O		# A simple Object.
-O:P # An object that is O, and for which P is claimed.
+O		    # A simple Object.
+X       # A variable for Objects.
+X|S		  # An object that is in S.
+\A\ X|S # Any object in S
+
 
 Sets:
-S		  # A simple Set
-{O}		# The set of objects that are O
-\A\ O	# The set of all objects that are O.
-
+S		    # A simple Set
+{O}     # The set that includes O and only it.
+SחS     # The set of all objects that are in both S and S
+S:P 	  # The set of all objects that are in S, and for which P is ‎True.
 
 Propositions:
-O;P 	# A proposition that for object that is O, P is true.
-OεS		# An object that is O is in S.
-\E\ O	# An object that is O exists.
-P /=> P # A proposition that if P than P.
-P <=> P # A proposition that P if and only if P.
-
-
+O;P 	  # Claiming that for object O, P is true.
+OεS     # Claimint that O is in S
+\E\ O	  # Claiming that an object O exists.
+P /=> P # Claiming that if P than P.
+P <=> P # Claiming that P if and only if P.
 
 Moods:
 LET {O} 	   # Introducing O. Existance is imperativly implied.
