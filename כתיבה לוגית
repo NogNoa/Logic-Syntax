@@ -1,22 +1,25 @@
 Objects:
 O		# A simple Object.
+OεS		# An object that is in S.
 
 Quality:
 Q			# A simple Quality
 
 Sets:
 S		  # A simple Set
-O:P 	# The set of object that is O, and for which P is claimed.
-{O}		# The set of objects that are O
-\A\ O	# The set of all objects that are O.
+{Q}		# The set of all objects that have the quality Q
+{S|Q} # The set of all objects in S that have Q
+SחS   # The set of all objects that are in both S and S
+S:P 	# The set of object that are in S, and for which P is ‎True.
+
 
 
 Propositions:
-O;P 	# A proposition that for object that is O, P is true.
-OεS		# An object that is O is in S.
-\E\ O	# An object that is O exists.
-P /=> P # A proposition that if P than P.
-P <=> P # A proposition that P if and only if P.
+O;P 	# Claiming that for object O, P is true.
+\A\ S:P	# Claiming that for any object in S, P is true.
+\E\ O	# Claiming that an object O exists.
+P /=> P # Claiming that if P than P.
+P <=> P # Claiming that P if and only if P.
 
 
 
