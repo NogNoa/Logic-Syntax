@@ -1,0 +1,17 @@
+﻿DEF{{〖∀a〗_n:∈R}: n∈N}  a_N
+* DEF{a_N ┤| a_N={a_n | n∈N∧a_n∈R}}
+NTT{a_N≡(a_n )_(n=1)^∞  ≡sequence}
+Def{{∀{(a_N,b_N )}:∃N:(∀n:<N;a_n=b_n )} almost identicle sequences1
+* Def{(a_N,b_N )∈almost identicle│∃N:∀n<N;a_n=b_n }
+
+
+
+1 Example translation to english: the set made soley of any topple of sequences such that exist an Object such that for any number smaller than it the members of the each sequence indexed by that number are equal to each other is defined as almost identicle sequences. 
+---------------
+
+------------------------------------------------------------
+
+---------------
+
+------------------------------------------------------------
+
