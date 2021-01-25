@@ -1,0 +1,16 @@
+NTT p,q,r,s,t
+
+NTT ∴
+SYN p∴q
+
+NTT ≡
+SYN p≡q
+LET p≡p
+LET (p≡q)∴(q≡p)
+
+NTT ⋅
+SYN p⋅q
+SYN p⋅q∴r
+NTT (p∴q)⋅(p∴r)∴(p∴q,r)
+LET (p∴q,r)∴(p∴q),(p∴r)
+((p∴q,r)∴(p∴q)),((p∴q,r)∴(p∴r))
