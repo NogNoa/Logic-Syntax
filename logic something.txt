@@ -3,14 +3,97 @@ NTT p,q,r,s,t
 NTT ∴
 SYN p∴q
 
-NTT ≡
-SYN p≡q
-LET p≡p
-LET (p≡q)∴(q≡p)
-
 NTT ⋅
 SYN p⋅q
-SYN p⋅q∴r
-NTT (p∴q)⋅(p∴r)∴(p∴q,r)
-LET (p∴q,r)∴(p∴q),(p∴r)
-((p∴q,r)∴(p∴q)),((p∴q,r)∴(p∴r))
+LET p⋅q∴p (⋅ reduction)
+LET p⋅q∴q⋅p (⋅ Commutativity)
+
+LET p∴p (self truth/∴ reflexivity)
+LET (p∴q∴r)∴(p∴r) (∴ transferability)
+
+? (p∴q)⋅(q∴r)∴(p∴q∴r) ?
+
+NTT ≡
+SYN p≡q
+LET (p∴q)⋅(q∴p)∴(p≡q)
+LET (p≡q)∴(p∴q)⋅(q∴p)
+
+PRV(p∴q)⋅(q∴p)≡(p≡q) (relation of ≡ and ∴)
+{((p∴q)⋅(q∴p)∴(p≡q))⋅((p≡q)∴(p∴q)⋅(q∴p))∴
+((p∴q)⋅(q∴p)≡(p≡q))} 
+
+LET (p⋅q)⋅r≡p⋅(q⋅r) (⋅ associativity)
+
+PRV p⋅q≡q⋅p (⋅ Commutativity)
+{   (p⋅q∴q⋅p)⋅(q⋅p∴p⋅q)∴
+    p⋅q≡q⋅p}
+
+PRV p≡p (self truth/≡ reflexivity)
+{(p∴p)⋅(p∴p)≡(p≡p)}
+
+PRV (p≡q)∴(q≡p) (≡ Commutativity)
+{(p≡q)∴(p∴q)⋅(q∴p)∴(q∴p)⋅(p∴q)∴(q≡p)} 
+
+PRV (p≡q)≡(q≡p) (≡ Commutativity)
+{   ((p≡q)∴(q≡p))⋅((q≡p)∴(p≡q))∴
+    (p≡q)≡(q≡p)}
+
+PRV (p≡q)⋅(q≡r)∴(p≡r) (≡ transferability)
+{   (   (p≡q)⋅(q≡r)≡
+        (p∴q)⋅(q∴p)⋅(q∴r)⋅(r∴q)≡
+        (p∴q)⋅(q∴r)⋅(q∴p)⋅(r∴q)≡
+        (p∴q)⋅(q∴r)⋅(r∴q)⋅(q∴p)∴
+        (p∴r)⋅(r∴p)∴(p≡r))∴
+    (p≡q)⋅(q≡r)∴(p≡r)}
+
+PRV (p≡q∴r)∴(p∴r)
+PRV (p∴q≡r)∴(p∴r) (≡∴ to ∴ transferability)
+
+
+PRV (r∴p⋅q)∴(r∴p)⋅(r∴q)
+{((r∴p⋅q)⋅(p⋅q∴p)⋅(p⋅q∴p))∴((r∴p)⋅(r∴q))}
+
+--@--
+
+PRV (p⋅q≡r)∴(r∴p)⋅(r∴q)
+{(p⋅q≡r)∴(r∴p⋅q)∴(r∴p)⋅(r∴q)}
+
+LET (p⋅(p⋅q∴r)∴(q∴r))
+
+NTT ¬
+SYN ¬p
+LET ¬¬p∴p
+
+NTT ∧
+NTT p⋅q≡p∧q
+
+NTT ∨
+SYN p∨q
+LET p∴p∨q
+
+NTT F
+LET F∴p
+LET p∧¬p∴F
+PRV p∧¬p≡F
+{F∴p∧¬p)⋅(p∧¬p∴F)∴(p∧¬p≡F)}
+
+LET (p∴F)∴¬p
+PRV ¬p≡(p∴F)
+{(¬p⋅(p⋅¬p≡p∧¬p∴F)∴(p∴F))⋅
+((p∴F)∴¬p)∴
+¬p≡(p∴F)}
+
+(p⋅T∴q)∴(p∴q)
+
+NTT T
+LET p∴T
+LET p≡(T∴p)
+LET p∨¬p
+PRV T≡p∨¬p
+{   (p∨¬p∴(T∴p∨¬p))⋅(p∨¬p∴T)∴
+    (T≡p∨¬p)}
+
+
+
+
+

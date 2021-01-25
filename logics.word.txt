@@ -1,0 +1,101 @@
+﻿There are claims.
+When they are written by themselves they are claimed.
+1. Principle of assingment
+They could be notated arbitrarily by p,q,r,s,t. Proclaiming that the same letter notate the same statement.
+
+NTT p,q,r,s,t
+2. principle of recursion
+we could put a sequence of claims and relations inside () and that sequence could be treated the same as a claim. The single symbol claim is an atomic claim, while the sequence is a complex claim
+NTT (p*q)
+
+The deduction relation
+
+NTT∴
+SYN p∴q
+Meaning: a deductive claim take two claims. There could be no situation where the left one is claimed and the right couldn’t be claimed.
+
+Axium of self truth
+LET p∴p
+Deduction is reflexive
+
+The deductive And
+NTT ⋅
+SYN p⋅q
+Meaning: the deductive and list claims togheter
+
+
+3. Principle of listing: sematicaly and let us list more than one claim, claiming two claims is the same as claiming the anding of them. 
+This is here proclaimed in english since the only way to claim two claims in our symbolic language is with and. So for instance p,  q∴ p⋅q is intuitively understandable, but actually meaningless.
+
+Qualities of the deductive and
+LET p⋅q∴p
+LET p⋅q∴q⋅p
+LET (p⋅q)⋅r∴p⋅(q⋅r)
+Anding is reducable one-way commutative and one-way associative
+
+This reducability of and gives us the most fundemental asymetry of deduction.
+
+PRV (r∴p⋅q)∴(r∴p)⋅(r∴q)
+{((r∴p⋅q)⋅(p⋅q∴p)⋅(p⋅q∴p))∴((r∴p)⋅(r∴q))}
+An and conclusion could be opened up.
+
+Axium of transfer
+
+LET (p∴q)⋅(q∴r)∴(p∴r)
+Deduction is transitive
+
+PRV p⋅q∴q
+{p⋅q∴q⋅p∴q}
+The equivalence relation
+NTT ≡
+SYN p≡q
+Meaning: an equivalance claim take two claims. There could be no situation where one claim is claimed while the other couldn’t be claimed.
+
+Defnition:
+LET (p∴q)⋅(q∴p)∴(p≡q)
+LET (p≡q)∴(p∴q)⋅(q∴p)
+We can use this defenition to shorten itself:
+
+PRV(p∴q)⋅(q∴p)≡(p≡q)
+{((p∴q)⋅(q∴p)∴(p≡q))⋅((p≡q)∴(p∴q)⋅(q∴p))∴
+((p∴q)⋅(q∴p)≡(p≡q))}
+In other words: Equivalance is equivalent to deduction of two claims in both directions
+
+PRV (p≡q)∴(q≡p)
+{(p≡q)∴(p∴q)⋅(q∴p)∴(q∴p)⋅(p∴q)∴(q≡p)} 
+Equivalance is one-way commotative.
+
+PRV (p≡q)⋅(q≡r)∴(p≡r)
+{(p≡q)⋅(q≡r)∴((p∴q)⋅(q∴p))⋅((q∴r)⋅(r∴q))∴((((q∴p)⋅(p∴q))⋅(q∴r))⋅(r∴q))∴(((q∴p)⋅((p∴q)⋅(q∴r)))⋅(r∴q))∴∴((((p∴q)⋅(q∴r))⋅(q∴p))⋅(r∴q))∴((p∴r)⋅((q∴p)⋅(r∴q)))  ∴((p∴r)⋅((q∴p)⋅(r∴q)))∴((p∴r)⋅((r∴q)⋅(q∴p)))∴((p∴r)⋅(r∴p))∴(p≡r)}
+
+Equivalance is transitive.
+
+Some of the axiums we received so far could be self-evidetly extended, by the principles of assignment and listing, from one-way deduction to equivalence:
+
+The axium of self truth:
+
+PRV p≡p
+{(p∴p)⋅(p∴p)≡(p≡p)}
+(This is also to say that equivalence is reflexive)
+
+The qualities of and:
+PRV p⋅q≡q⋅p
+{(p⋅q∴q⋅p)⋅(q⋅p∴p⋅q)∴
+   ( p⋅q≡q⋅p)}
+commotativity 
+
+PRV (p⋅q)⋅r≡p⋅(q⋅r)
+{((p⋅q)⋅r∴p⋅(q⋅r))⋅((p⋅(q⋅r)∴(q⋅r)⋅p∴(r⋅q)⋅p∴r⋅(q⋅p)∴r⋅(p⋅q)∴(p⋅q)⋅r))∴((p⋅q)⋅r≡p⋅(q⋅r))
+and associativity, goes in both ways.
+
+And finaly the commotative quality of equivilance itslef:
+
+PRV (p≡q)≡(q≡p)
+{((p≡q)∴(q≡p))⋅((q≡p)∴(p≡q))∴
+    (p≡q)≡(q≡p)}
+
+Now transferability is naturaly one-sided. There’s also tranferability of deduction and equivalence toghether with the weaker one-side relation inhereting
+PRV ((p≡q)⋅(q∴r))∴(p∴r)
+{█(((p≡q)⋅(q∴r))@∴(((p∴q)⋅(q∴p))⋅(q∴r))@∴((p∴q)⋅(q∴r))@∴(p∴r) )}
+PRV ((p∴q)⋅(q≡r))∴(p∴r)
+{█(((p∴q)⋅(q≡r))@∴((p∴q)⋅((q∴r)⋅(r∴q)))@∴((p∴q)⋅(q∴r))@∴(p∴r) )}
