@@ -27,17 +27,21 @@ Meaning: the deductive and list claims togheter
 3. Principle of listing: sematicaly and let us list more than one claim, claiming two claims is the same as claiming the anding of them. 
 This is here proclaimed in english since the only way to claim two claims in our symbolic language is with and. So for instance p,  q∴ p⋅q is intuitively understandable, but actually meaningless.
 
-Qualities of the deductive and
+Listing will be the defining quality of and.
+
+Qualities of the deductive and:
 LET p⋅q∴p
 LET p⋅q∴q⋅p
 LET (p⋅q)⋅r∴p⋅(q⋅r)
-Anding is reducable one-way commutative and one-way associative
+Anding is reducable, one-way commutative and one-way associative
 
 This reducability of and gives us the most fundemental asymetry of deduction.
 
-PRV (r∴p⋅q)∴(r∴p)⋅(r∴q)
-{((r∴p⋅q)⋅(p⋅q∴p)⋅(p⋅q∴p))∴((r∴p)⋅(r∴q))}
-An and conclusion could be opened up.
+
+
+
+
+
 
 Axium of transfer
 
@@ -46,6 +50,21 @@ Deduction is transitive
 
 PRV p⋅q∴q
 {p⋅q∴q⋅p∴q}
+Reduction doesn’t care about order
+
+PRV(p∴q)⋅(r∴s)∴(p⋅r∴q⋅s)
+
+
+PRV (r∴p⋅q)∴(r∴p)⋅(r∴q)
+{((r∴p⋅q)⋅(p⋅q∴p))⋅((r∴p⋅q)⋅(p⋅q∴q))∴(r∴p)⋅(r∴q)}
+An and conclusion could be seperated
+
+By applying it to iteself
+PRV (r∴p⋅q)∴(r∴p)
+PRV (r∴p⋅q)∴(r∴q)
+{((r∴p⋅q)∴(r∴p)⋅(r∴q))∴((r∴p⋅q)∴(r∴p))⋅((r∴p⋅q)∴(r∴q))}
+An and conclusion could be reduced
+
 The equivalence relation
 NTT ≡
 SYN p≡q
@@ -78,7 +97,7 @@ PRV p≡p
 {(p∴p)⋅(p∴p)≡(p≡p)}
 (This is also to say that equivalence is reflexive)
 
-The qualities of and:
+The qualities of and
 PRV p⋅q≡q⋅p
 {(p⋅q∴q⋅p)⋅(q⋅p∴p⋅q)∴
    ( p⋅q≡q⋅p)}
@@ -95,7 +114,28 @@ PRV (p≡q)≡(q≡p)
     (p≡q)≡(q≡p)}
 
 Now transferability is naturaly one-sided. There’s also tranferability of deduction and equivalence toghether with the weaker one-side relation inhereting
-PRV ((p≡q)⋅(q∴r))∴(p∴r)
-{█(((p≡q)⋅(q∴r))@∴(((p∴q)⋅(q∴p))⋅(q∴r))@∴((p∴q)⋅(q∴r))@∴(p∴r) )}
-PRV ((p∴q)⋅(q≡r))∴(p∴r)
-{█(((p∴q)⋅(q≡r))@∴((p∴q)⋅((q∴r)⋅(r∴q)))@∴((p∴q)⋅(q∴r))@∴(p∴r) )}
+PRV(p≡q)⋅(q∴r)∴(p∴r)
+{█((p≡q)⋅(q∴r)@∴((p∴q)⋅(q∴p))⋅(q∴r)@∴(p∴q)⋅(q∴r)@∴(p∴r) )}
+PRV (p∴q)⋅(q≡r)∴(p∴r)
+{█((p∴q)⋅(q≡r)@∴(p∴q)⋅((q∴r)⋅(r∴q))@∴(p∴q)⋅(q∴r)@∴(p∴r) )}
+And equivalence is also transitive alone
+PRV (p≡q)⋅(q≡r)∴(p≡r)
+{█((p≡q)⋅(q≡r)∴((p≡q)⋅(q∴r))⋅((q≡p)⋅(r≡q))@∴((p∴r))⋅((q∴p)⋅(r≡q))∴((p∴r))⋅((r≡q)⋅(q∴p))@∴((p∴r))⋅((r∴p))∴(p≡r) )}
+
+
+
+To sum up
+
+Deduction is 
+• Reflecsive  p∴p
+• Transitive (p∴q)⋅(q∴r)∴(p∴r)
+
+The deductive and is
+• Reducible p⋅q∴p
+• Commutative p⋅q≡q⋅p
+• Associative (p⋅q)⋅r≡p⋅(q⋅r)
+
+Equivalance is 
+• Reflecsive p≡p
+• Transitive (p≡q)⋅(q≡r)∴(p≡r)
+• Symetric (p≡q)≡(q≡p)
