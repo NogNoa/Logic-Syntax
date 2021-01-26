@@ -12,7 +12,7 @@ The deduction relation
 
 NTT∴
 SYN p∴q
-Meaning: a deductive claim take two claims. There could be no situation where the left one is claimed and the right couldn’t be claimed.
+Meaning: a deductive claim take two claims. There could be no situation where the left one is claimed and the right couldn't be claimed.
 
 Axium of self truth
 LET p∴p
@@ -50,9 +50,14 @@ Deduction is transitive
 
 PRV p⋅q∴q
 {p⋅q∴q⋅p∴q}
-Reduction doesn’t care about order
+Reduction doesn't care about order
 
 PRV(p∴q)⋅(r∴s)∴(p⋅r∴q⋅s)
+Start from
+PRV p⋅(r∴s)∴(p⋅r∴p⋅s)
+
+
+That's a problem
 
 
 PRV (r∴p⋅q)∴(r∴p)⋅(r∴q)
@@ -68,7 +73,7 @@ An and conclusion could be reduced
 The equivalence relation
 NTT ≡
 SYN p≡q
-Meaning: an equivalance claim take two claims. There could be no situation where one claim is claimed while the other couldn’t be claimed.
+Meaning: an equivalance claim take two claims. There could be no situation where one claim is claimed while the other couldn't be claimed.
 
 Defnition:
 LET (p∴q)⋅(q∴p)∴(p≡q)
@@ -85,7 +90,7 @@ PRV (p≡q)∴(q≡p)
 Equivalance is one-way commotative.
 
 PRV (p≡q)⋅(q≡r)∴(p≡r)
-{(p≡q)⋅(q≡r)∴((p∴q)⋅(q∴p))⋅((q∴r)⋅(r∴q))∴((((q∴p)⋅(p∴q))⋅(q∴r))⋅(r∴q))∴(((q∴p)⋅((p∴q)⋅(q∴r)))⋅(r∴q))∴∴((((p∴q)⋅(q∴r))⋅(q∴p))⋅(r∴q))∴((p∴r)⋅((q∴p)⋅(r∴q)))  ∴((p∴r)⋅((q∴p)⋅(r∴q)))∴((p∴r)⋅((r∴q)⋅(q∴p)))∴((p∴r)⋅(r∴p))∴(p≡r)}
+{(p≡q)⋅(q≡r)∴((p∴q)⋅(q∴p))⋅((q∴r)⋅(r∴q))∴((((q∴p)⋅(p∴q))⋅(q∴r))⋅(r∴q))∴(((q∴p)⋅((p∴q)⋅(q∴r)))⋅(r∴q))∴((((p∴q)⋅(q∴r))⋅(q∴p))⋅(r∴q))∴((p∴r)⋅((q∴p)⋅(r∴q)))  ∴((p∴r)⋅((q∴p)⋅(r∴q)))∴((p∴r)⋅((r∴q)⋅(q∴p)))∴((p∴r)⋅(r∴p))∴(p≡r)}
 
 Equivalance is transitive.
 
@@ -104,7 +109,7 @@ PRV p⋅q≡q⋅p
 commotativity 
 
 PRV (p⋅q)⋅r≡p⋅(q⋅r)
-{((p⋅q)⋅r∴p⋅(q⋅r))⋅((p⋅(q⋅r)∴(q⋅r)⋅p∴(r⋅q)⋅p∴r⋅(q⋅p)∴r⋅(p⋅q)∴(p⋅q)⋅r))∴((p⋅q)⋅r≡p⋅(q⋅r))
+{((p⋅q)⋅r∴p⋅(q⋅r))⋅((p⋅(q⋅r)∴(q⋅r)⋅p∴(r⋅q)⋅p∴r⋅(q⋅p)∴r⋅(p⋅q)∴(p⋅q)⋅r))∴((p⋅q)⋅r≡p⋅(q⋅r))}
 and associativity, goes in both ways.
 
 And finaly the commotative quality of equivilance itslef:
@@ -113,9 +118,10 @@ PRV (p≡q)≡(q≡p)
 {((p≡q)∴(q≡p))⋅((q≡p)∴(p≡q))∴
     (p≡q)≡(q≡p)}
 
-Now transferability is naturaly one-sided. There’s also tranferability of deduction and equivalence toghether with the weaker one-side relation inhereting
+Now transferability is naturaly one-sided. There's also tranferability of deduction and equivalence toghether with the weaker one-side relation inhereting
 PRV(p≡q)⋅(q∴r)∴(p∴r)
 {█((p≡q)⋅(q∴r)@∴((p∴q)⋅(q∴p))⋅(q∴r)@∴(p∴q)⋅(q∴r)@∴(p∴r) )}
+
 PRV (p∴q)⋅(q≡r)∴(p∴r)
 {█((p∴q)⋅(q≡r)@∴(p∴q)⋅((q∴r)⋅(r∴q))@∴(p∴q)⋅(q∴r)@∴(p∴r) )}
 And equivalence is also transitive alone
@@ -127,15 +133,15 @@ PRV (p≡q)⋅(q≡r)∴(p≡r)
 To sum up
 
 Deduction is 
-• Reflecsive  p∴p
-• Transitive (p∴q)⋅(q∴r)∴(p∴r)
+* Reflecsive  p∴p
+* Transitive (p∴q)⋅(q∴r)∴(p∴r)
 
 The deductive and is
-• Reducible p⋅q∴p
-• Commutative p⋅q≡q⋅p
-• Associative (p⋅q)⋅r≡p⋅(q⋅r)
+* Reducible p⋅q∴p
+* Commutative p⋅q≡q⋅p
+* Associative (p⋅q)⋅r≡p⋅(q⋅r)
 
 Equivalance is 
-• Reflecsive p≡p
-• Transitive (p≡q)⋅(q≡r)∴(p≡r)
-• Symetric (p≡q)≡(q≡p)
+* Reflecsive p≡p
+* Transitive (p≡q)⋅(q≡r)∴(p≡r)
+* Symetric (p≡q)≡(q≡p)
