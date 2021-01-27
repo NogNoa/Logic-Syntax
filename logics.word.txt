@@ -59,6 +59,7 @@ PRV p⋅(r∴s)∴(p⋅r∴p⋅s)
 
 That's a problem
 
+(p∴q)⋅(r∴s)∴((p∴q)⋅r∴(p∴q)⋅s)
 
 PRV (r∴p⋅q)∴(r∴p)⋅(r∴q)
 {((r∴p⋅q)⋅(p⋅q∴p))⋅((r∴p⋅q)⋅(p⋅q∴q))∴(r∴p)⋅(r∴q)}
