@@ -14,6 +14,8 @@ NTT∴
 SYN p∴q
 Meaning: a deductive claim take two claims. There could be no situation where the left one is claimed and the right couldn't be claimed.
 
+Any claim on the left side is called a premise, any claim on the right is called conclusion.
+
 Axium of self truth
 LET p∴p
 Deduction is reflexive
@@ -51,11 +53,22 @@ Deduction is transitive
 PRV p⋅q∴q
 {p⋅q∴q⋅p∴q}
 Reduction doesn't care about order
+Some basic tools for proof
+
+Axium of Acumulation
+Let (p∴q)⋅(p∴r)∴(p∴q⋅r)
+
+This is required for any complex proof. Any conclusion we reach can be used to deduce a further conclusion because the axium of transfer, but if we want to use more than one conclusion we have to list them. This axium tell us that we are allowed to do just that.
+
+4. Principle of eternal truths: we can deduce from any premise itself, listed with any axium or deduction that was already proved (such that it include all the premises it required for itself) 
+In this way if s is an axium or a proved deduction than:
+p∴p⋅s
+
+PRV (r∴s)∴(p⋅r∴p⋅s)
+{█((r∴s)∴(r∴s)⋅(p⋅r∴r)∴(p⋅r∴r)⋅(r∴s)∴(p⋅r∴s)@∴(p⋅r∴p)⋅(p⋅r∴s)∴(p⋅r∴p⋅s) )}
+
 
 PRV(p∴q)⋅(r∴s)∴(p⋅r∴q⋅s)
-Start from
-PRV p⋅(r∴s)∴(p⋅r∴p⋅s)
-
 
 That's a problem
 
