@@ -27,6 +27,7 @@ Meaning: the deductive and list claims togheter
 
 
 3. Principle of listing: sematicaly and let us list more than one claim, claiming two claims is the same as claiming the anding of them. 
+In other words if two things could be claimed than their list can as well.
 This is here proclaimed in english since the only way to claim two claims in our symbolic language is with and. So for instance p,  q∴ p⋅q is intuitively understandable, but actually meaningless.
 
 Listing will be the defining quality of and.
@@ -60,19 +61,15 @@ Let (p∴q)⋅(p∴r)∴(p∴q⋅r)
 
 This is required for any complex proof. Any conclusion we reach can be used to deduce a further conclusion because the axium of transfer, but if we want to use more than one conclusion we have to list them. This axium tell us that we are allowed to do just that.
 
-4. Principle of eternal truths: we can deduce from any premise itself, listed with any axium or deduction that was already proved (such that it include all the premises it required for itself) 
+4. Principle of eternal truths: from any claim could be deduced that claim listed with a claim that always could be claimed. (such that it include all the premises it required for itself) 
 In this way if s is an axium or a proved deduction than:
 p∴p⋅s
 
 PRV (r∴s)∴(p⋅r∴p⋅s)
 {█((r∴s)∴(r∴s)⋅(p⋅r∴r)∴(p⋅r∴r)⋅(r∴s)∴(p⋅r∴s)@∴(p⋅r∴p)⋅(p⋅r∴s)∴(p⋅r∴p⋅s) )}
 
-
 PRV(p∴q)⋅(r∴s)∴(p⋅r∴q⋅s)
-
-That's a problem
-
-(p∴q)⋅(r∴s)∴((p∴q)⋅r∴(p∴q)⋅s)
+{(█((p∴q)⋅(r∴s)∴(p∴q)∴(p⋅r∴q⋅r∴q)∴(p⋅r∴q)@⋅(p∴q)⋅(r∴s)∴(r∴s)∴(p⋅r∴p⋅s∴s)∴(p⋅r∴s) ))∴((p∴q)⋅(r∴s)∴(p⋅r∴q))⋅((p∴q)⋅(r∴s)∴(p⋅r∴s))∴((p∴q)⋅(r∴s)∴(p⋅r∴q)⋅(p⋅r∴s)∴(p⋅r∴q⋅s))}
 
 PRV (r∴p⋅q)∴(r∴p)⋅(r∴q)
 {((r∴p⋅q)⋅(p⋅q∴p))⋅((r∴p⋅q)⋅(p⋅q∴q))∴(r∴p)⋅(r∴q)}
