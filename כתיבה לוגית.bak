@@ -1,0 +1,42 @@
+Objects:
+O		    # A simple Object.
+X           # A variable for Objects.
+X|S		    # An object that is in S.
+\A\ X|S     # Any object in S
+
+
+Sets:
+S		    # A simple Set
+{O}         # The set that includes O and only it.
+SחS         # The set of all objects that are in both S and S
+S:P 	    # The set of all objects that are in S, and for which P is ‎True.
+
+Propositions:
+P           # A simple Proposition
+O;P 	    # Claiming that for object O, P is true.
+OεS         # Claiming that O is in S
+\E\ O	    # Claiming that an object O exists.
+P /=> P     # Claiming that if P than P.
+P <=> P     # Claiming that P if and only if P.
+
+Moods:
+LET {O} 	# Introducing O. Existance is imperativly implied.
+LET {P} 	# Imperativly claiming P.
+DEF {S}	    # Introducing S. the syntax is expected to end with or at least include ':P'. Existance is imperativly implied.
+{P} 		# Claiming P, relying on what was already Known.
+PRV {P}		# expect everything until QED to be what P is relying on, i.e the proof for P.
+ASM {P} name  # Introducing P as assumption without claiming it. P get a name.
+SUP {P}		# Claiming P, relying on all preceding assumptions. If a preceding assumption is found False, P is automaticly discarded.
+SUP {P} name  # Claiming P, relying on a named assumption. If the assumption is found False, P is automaticly discarded.
+CNT {P}		# Concluding that P is a contradiction. expects next line to claim an assumption False.
+FLS name	# Claiming an assumption is False.
+QED			# End of proof. P in the PRV statement is claimed and every assumption inside the proof is discarded.
+CRL {P}	    # After QED, claiming a proposition as corollary from the proof, thus saving it from being discarded.
+NTT {O \== O)
+NTT {S \== S) # Imperativly introducing an equivalent way to refer to an object or set already introduced.
+
+Order of Operations:
+Mathematical operators before logical.
+internal operations for objects and sets before propositional
+ε before ;
+; before /=>,<=>, <=\
