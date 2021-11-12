@@ -1,7 +1,5 @@
 ﻿There are claims.
-Writing a claim is called climing it.Claims could be valid.Claims that are other than valid are called invalid.Climing a claim is claiming it to be valid.These are all to be regarded as semantical rather than logical statments.The logically significant point is that just because a claim is claimed doesn't mean that it is valid,but it does mean that we say it is valid.
-
-A claim is proven if it shown to algebricaly follow from valid claims.A proven claim is valid.Any other valid claim is called an Axium.We as rational humans endevour to make logical system with as few axiums as possible.
+Writing a claim is called climing it.Claims could be valid. Claims that are other than valid are called invalid. Climing a claim is claiming it to be valid. These are all to be regarded as semantical rather than logical statments.The significant point is that just because a claim is claimed doesn't mean that it is valid only that we say it is valid. But in our logic this distinction don't really exist.
 
 1.	Principle of assingment
 They could be notated arbitrarily by p,q,r,s,t.Proclaiming that the same letter notate the same statement.
@@ -11,6 +9,10 @@ NTT p,q,r,s,t
 we could put a sequence of claims and relations inside () and that sequence could be treated the same as a claim.The single symbol claim is an atomic claim,while the sequence is a complex claim
 NTT (p*q)
 
+There are claims that we take to be self-evidently valid,these we call premises and denote with
+NTT {LET p}
+As a matter of principle we endevour to make logical system with the minimum possible premises.Major or independent premises we call Axiums.
+
 The deduction relation
 
 NTT∴
@@ -18,6 +20,7 @@ SYN p∴q
 Meaning: a deductive claim take two claims.Claiming the deduction is caliming there could be no situation where the left one is valid and the right is invalid.
 
 Any claim on the left side of a deduction is called a premise,any claim on the right is called a conclusion.
+
 
 Axium of self validity
 LET p∴p
@@ -52,6 +55,10 @@ Axium of transfer
 
 LET (p∴q)⋅(q∴r)∴(p∴r)
 Deduction is transitive
+
+A claim is proven if it shown to algebricaly follow from valid claims. A proven claim is valid. 
+
+We use deduction to force a right valid claim from a left valid claim.By using the transitivity of deduction we could esseintialy build a tree of valid claims from previous valid claims.
 
 PRV p⋅q∴q 
 {p⋅q∴q⋅p∴q}
