@@ -1,5 +1,5 @@
 ﻿There are claims.
-Writing a claim is called climing it.Claims could be valid. Claims that are other than valid are called invalid. Climing a claim is claiming it to be valid. These are all to be regarded as semantical rather than logical statments.The significant point is that just because a claim is claimed doesn't mean that it is valid only that we say it is valid. But in our logic this distinction don't really exist.
+Writing a claim is called climing it.Claims could be valid.Claims that are other than valid are called invalid.Climing a claim is claiming it to be valid.These are all to be regarded as semantical rather than logical statments.The significant point is that just because a claim is claimed doesn't mean that it is valid only that we say it is valid.But in our logic this distinction doesn't really exist.
 
 1.	Principle of assingment
 They could be notated arbitrarily by p,q,r,s,t.Proclaiming that the same letter notate the same statement.
@@ -56,7 +56,7 @@ Axium of transfer
 LET (p∴q)⋅(q∴r)∴(p∴r)
 Deduction is transitive
 
-A claim is proven if it shown to algebricaly follow from valid claims. A proven claim is valid. 
+A claim is proven if it shown to algebricaly follow from valid claims.A proven claim is valid.
 
 We use deduction to force a right valid claim from a left valid claim.By using the transitivity of deduction we could esseintialy build a tree of valid claims from previous valid claims.
 

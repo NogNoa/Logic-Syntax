@@ -31,7 +31,7 @@ SUP {{∀n:¬P(n)}_s⊆{∀n:(∈N∧≤N)}_s }
 {|{∀n:(∈N∧≤N)}_s |=N<∞}
 SUP {|{∀n:¬P(n)}_s |<N<∞}
 DSC left side
-    ASM ,,,{∀n:¬P(n)}-s..<∞. right side
+    ASM {|〖{∀n:¬P(n)}〗_s |<∞}  right side
         SUP {∃N≔max⁡{∀n:¬P(n)}
         SUP {∀m:>N;(m∉{∀n:¬P(n)}⇔P(m))}
     QED
