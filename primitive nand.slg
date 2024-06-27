@@ -2,8 +2,6 @@ prim nand
 def not: not a ?= nand a a
 def T: nand a not a ?= T
 def F: not T ?= F
-def neg: neg o a b ?= o not a not b
+def neg: a b neg ?= not a not b
 
-neg not o a b ?= not o not a not b
-
-not neg o a b ?= not o not a not b
+not o a b neg ?= not o not a not b
