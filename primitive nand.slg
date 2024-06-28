@@ -6,8 +6,14 @@ def T: ?= nand a not a
 def F: ?= not T
 def neg: neg o a b ?= o not a not b
 def morg: morg ?= not neg
-prv {neg (not o) = morg o|
-	neg (not o) a b ?= (not o) not a not b ?= not o not a not b
+
+asrt {neg not a b c ?= neg (not a) b c
+	  neg a not b c ?= neg a (not b) c
+	  neg a b not c ?= neg a b (not c)
+}
+
+prv {neg not = morg|
+	neg not o a b ?= neg (not o) a b ?= (not o) not a not b ?= not o not a not b
 	morg o a b ?= not neg o a b ?= not o not a not b
 }
 
@@ -29,7 +35,7 @@ prv {not morg ?= neg|
 	not morg ?= not not neg ?= neg
 }
 prv {neg neg ?= yes|
-	neg neg o a b ?= neg o not a not b ?= o not not not a not b 
+	neg neg o a b ?= neg o not a not b ?= o not (not a) not (not b) ?= o a b
 }
 prv {neg morg ?= not|
 	neg morg ?= neg not neg ?= neg neg not ?= yes not ?= not
