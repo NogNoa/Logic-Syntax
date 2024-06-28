@@ -10,6 +10,11 @@ prv {neg (not o) = morg o|
 	neg (not o) a b ?= (not o) not a not b ?= not o not a not b
 	morg o a b ?= not neg o a b ?= not o not a not b
 }
+
+prv {\all o; o yes = o|
+	o yes a ?= o a
+}
+
 def and: ?= not nand
 def or: ?= neg nand
 def nor: ?= morg nand
@@ -29,6 +34,29 @@ prv {neg neg ?= yes|
 prv {neg morg ?= not|
 	neg morg ?= neg not neg ?= neg neg not ?= yes not ?= not
 }
+prv {morg not ?= neg|
+	morg not ?= not neg not = neg not not = neg yes ?= neg
+}
+prv {morg neg ?= yes|
+	morg neg ?= not neg neg ?= not yes ?= not
+}
 prv {morg morg ?= yes|
 	morg morg ?= not neg not neg ?= not not neg neg ?= yes yes ?= yes
 }
+
+
+def then: then a b ?= nand a nand a b
+def if: ?= neg then
+
+def nif:= not if
+def nthen := not then
+
+
+def xor: nand if a b then a b
+def iff: not xor
+
+def pre: pre a b = a
+def suf: suf a b = b
+
+def npre: not pre
+def nsuf: not suf
