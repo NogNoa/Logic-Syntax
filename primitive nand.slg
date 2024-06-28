@@ -1,12 +1,12 @@
-def ():: \all o:: sym, Φ, Ψ:: formula; {(v:: sign: = Φ); o (Φ) Ψ ?= ο v Ψ}
+def ():: \all o:: sym, Φ, Ψ:: formula; {(v:: sym: = Φ); o (Φ) Ψ ?= ο v Ψ}
 prim nand
 def yes: yes a = a
 def not: not a ?= nand a a
 def T: ?= nand a not a
 def F: ?= not T
 def neg: neg o a b ?= o not a not b
-def morg: morg o ?= not neg o
-prv {neg (not o) a b = morg o a b|
+def morg: morg ?= not neg
+prv {neg (not o) = morg o|
 	neg (not o) a b ?= (not o) not a not b ?= not o not a not b
 	morg o a b ?= not neg o a b ?= not o not a not b
 }
@@ -18,4 +18,17 @@ prv {nor = neg and = not or|
 	not or ?= not neg nand ?= morg nand
 }
 
-asrt {\not \not ?= yes} /# Binary logic
+asrt {not not ?= yes} /# Binary logic
+
+prv {not morg ?= neg|
+	not morg ?= not not neg ?= neg
+}
+prv {neg neg ?= yes|
+	neg neg o a b ?= neg o not a not b ?= o not not not a not b 
+}
+prv {neg morg ?= not|
+	neg morg ?= neg not neg ?= neg neg not ?= yes not ?= not
+}
+prv {morg morg ?= yes|
+	morg morg ?= not neg not neg ?= not not neg neg ?= yes yes ?= yes
+}
