@@ -56,7 +56,7 @@ def nthen := not then
 def xor: nand if a b then a b
 def iff: not xor
 
-neg xor = neg nand if a b then a b ?= nand nif a b nthen a b ?= nand morg then a b not then a b
+neg xor a b ?= xor (not a) (not b) = nand if not a not b then not a not b ?= nand neg if a b neg then a b ?= nand then a b if a b
 
 def pre: pre a b = a
 def suf: suf a b = b
