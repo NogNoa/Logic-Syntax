@@ -21,14 +21,6 @@ prv {\all o; o yes = o|
 	o yes a ?= o a
 }
 
-def and: ?= not nand
-def or: ?= neg nand
-def nor: ?= morg nand
-prv {nor = neg and = not or|
-	neg and ?= neg (not nand) ?= morg nand
-	not or ?= not neg nand ?= morg nand
-}
-
 asrt {not not ?= yes} /# Binary logic
 
 prv {not morg ?= neg|
@@ -50,6 +42,9 @@ prv {morg morg ?= yes|
 	morg morg ?= not neg not neg ?= not not neg neg ?= yes yes ?= yes
 }
 
+def and: ?= not nand
+def or: ?= neg nand
+def nor: ?= morg nand
 
 def then: then a b ?= nand a nand a b
 def if: ?= neg then
@@ -60,6 +55,8 @@ def nthen := not then
 
 def xor: nand if a b then a b
 def iff: not xor
+
+neg xor = neg nand if a b then a b ?= nand nif a b nthen a b ?= nand morg then a b not then a b
 
 def pre: pre a b = a
 def suf: suf a b = b
