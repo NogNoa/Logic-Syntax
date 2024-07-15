@@ -1,7 +1,8 @@
-pref x y = x
-suff x y = y
-T x y = T
-F x y = F
+def pref: pref x y = x
+def suff: suff x y = y
+def not: {not x != x} \and {not not x = x}
+def truth-value: \all v::truth-value; v x y = v
+def T,F: \in truth-value \and F = \not T
 and x x = or x x = x
 if x x = then x x = iff x x = T
 
