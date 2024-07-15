@@ -13,8 +13,7 @@ def {nand:
 }
 prv {nand not x x = T|
 		nand not x x =
-		nand not not not x x =
-		not not not not x x
+		nand nand x x x 
 }
 prv {pref nand = suff nand|
 	nand pref x y = 
