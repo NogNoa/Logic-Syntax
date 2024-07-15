@@ -1,8 +1,20 @@
 def pref: pref x y = x
 def suff: suff x y = y
+def T: = T x y
 def not: {not x != x} \and {not not x = x}
-def truth-value: \all v::truth-value; v x y = v
-def T,F: \in truth-value \and F = \not T
+def F: = not T
+prv {F x y = F|
+	F x y = not T x y = not T = F
+}
+def {nand:
+	nand x x = not x
+	nand x not x = T
+}
+prv {
+	{nand T T = F| nand T T = not T} \and
+	{nand T F = T| nand T F = nand T not T = T}
+	{nand F F = T|}
+}
 and x x = or x x = x
 if x x = then x x = iff x x = T
 
