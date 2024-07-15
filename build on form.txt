@@ -12,19 +12,24 @@ def {nand:
 	nand x not x = T
 }
 prv {nand not x x = T|
-		nand not x x =
-		nand nand x x x 
-}
-prv {pref nand = suff nand|
-	nand pref x y = 
+	(nand not x x)(x | not x) =
+	nand not not x not x =
+	nand x not x = 
+	T
 }
 prv {
 	{nand T T = F| nand T T = not T} \and
 	{nand T F = T| nand T F = nand T not T = T}
+	{nand F T = T| nand F T = nand F not F = T}
 	{nand F F = T|}
 }
-and x x = or x x = x
-if x x = then x x = iff x x = T
+def and: = not nand
+
+
+def neg: neg x y = not x not y
+def or: nand neg
+
+prv{(not x) neg = not (x neg)}
 
 
 
