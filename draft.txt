@@ -1,0 +1,11 @@
+T := T a b = T
+F := F a b = F
+not a := nand a a
+nand a a 
+nand T a = 
+
+neg (nand nand a b nand b a) ?= 
+nand neg nand a b neg nand b a) ?= 
+
+
+ 

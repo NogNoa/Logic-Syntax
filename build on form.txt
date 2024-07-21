@@ -1,0 +1,10 @@
+pref x y = x
+suff x y = y
+T x y = T
+F x y = F
+and x x = or x x = x
+if x x = then x x = iff x x = T
+
+
+
+ 
