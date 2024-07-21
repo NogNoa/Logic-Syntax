@@ -1,0 +1,48 @@
+prim nand
+syn a nand b
+def not: not a ?= a nand a
+def T: T ?= a nand not a
+prv a nand T = not a
+	a nand (a nand not a) = not a
+	a nand a nand not a = not a nand not a = not not a
+	(a nand a) nand (a nand not a) = not a nand T = not not a
+	
+a nand (b nand c) ?=
+not a and (b nand c) ?=
+not (a and (b nand c)) ?=
+not (a and not(b and c)) ?=
+not (a and (not b or not c)) ?=
+not ((a and not b) or (a and not c)) ?=
+(not (a and not b) and not(a and not c)) ?=
+not ((a nand not b) nand (a nand not c))
+
+
+not ((a nand not a) nand (a nand not not a)) ?=
+not (T nand (a nand a)) ?=
+not (T nand (a nand a)) ?=
+not (T nand not a) ?=
+not not not a ?=
+not a
+
+not not a ?=
+not (a nand a) ?=
+(a nand a) nand (a nand a)?=
+
+a and b = not (a nand b)
+a or b = not (not a and not b) = not a nand not b
+a nor b = not (not a nand not b)
+
+\all o;
+a o b = not (not a morg(o) not b)
+	t o t = not (not t morg(o) not t) ?= 
+	t o t = not (f morg(o) f)
+	
+	f o t = not (t morg(o) f)
+	t o f = not (f morg(o) t)
+	f o f = not (t morg(o) t)
+
+o = (i j k l) \than morg(o) = (~l ~k ~j ~i)
+if = (t f t t), nthen = (f f t f) 
+then = (t t f t) nif = (f t f f)
+
+a o b = not a rev(o) not b

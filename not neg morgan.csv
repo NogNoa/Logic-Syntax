@@ -1,0 +1,9 @@
+﻿,not ,rev,morgan
+and ,nand,nor,or
+or,nor,nand,and
+if,nif,then,nthen
+then,nthen,if,nif
+taut,cont,taut,cont
+iff,xor,iff,xor
+A,not a,not a,A
+B,not b,not b,B
