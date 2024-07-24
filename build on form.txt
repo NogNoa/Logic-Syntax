@@ -58,6 +58,13 @@ prv {or x not x = T|
 def morg: morg x = not x neg
 
 prv {not morg x = x neg | not morg x = not not x neg}
+prv {x, y: x y = yes; not morg = x neg y}
+	not morg = not neg not
+	not morg a b c = not not a neg b c = a not b not c
+	not neg not a b c = not a not b c
+	
+	
+
 prv {morg x neg = not x | morg x neg = not x neg neg}
 prv {morg neg = not| morg neg = not neg neg = not}
 
