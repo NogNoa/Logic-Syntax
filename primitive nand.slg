@@ -1,4 +1,17 @@
 def ():: \all o:: sym, Φ, Ψ:: formula; {(v:: sym: = Φ); o (Φ) Ψ ?= ο v Ψ}
+def {operator:: metatype: 
+	{\all i:: nat; 
+		{\all o:: operator[i];
+			{\exist l:: (list sym)[i]:
+				{\exist Φ:: formula:
+					{o \nin Φ \and
+						o l ?= Φ}}}}}}
+def {precede:: relation[operator]: 
+	{\all i,j:: nat; 
+		{\all o:: operator[i], u:: operator[j]: o precede u; 
+			{l:: (list sym), k:: nat: o = l[k];
+				{u l = u l[..k] (o l[k+1..k+i+1]) l[k+i+1..j-k-1]}}}}}
+
 prim nand
 def yes: yes a = a
 def not: not a ?= nand a a
