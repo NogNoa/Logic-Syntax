@@ -11,6 +11,7 @@ def {nand:
 	nand x x = not x
 	nand x not x = T
 }
+asrt {not precede nand}
 prv {nand not x x = T|
 	(nand not x x)(x | not x) =
 	nand not not x not x =
@@ -28,6 +29,15 @@ col {and x x = x
 	and x not x = F}
 
 def neg: neg x y = not x not y
+asrt {not precede neg}
+prv {neg neg = yes|
+	neg neg x y =
+	neg not x not y =
+	neg (not x) (not y) =
+	x y =
+	yes x y
+}
+
 def or: = nand neg
 prv {or x x = x|
 	or x x = 
@@ -46,6 +56,10 @@ prv {or x not x = T|
 }
 
 def morg: morg x = not x neg
+
+prv {not morg x = x neg | not morg x = not not x neg}
+prv {morg x neg = not x | morg x neg = not x neg neg}
+prv {morg neg = not| morg neg = not neg neg = not}
 
 def nor: = morg nand
 prv {nor = not or| not or = not nand neg = morg nand}
