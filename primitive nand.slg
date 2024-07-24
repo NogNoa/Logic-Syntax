@@ -3,8 +3,12 @@ def {operator:: type:
 		{\all o:: operator;
 			{\exist l:: (list sym):
 				{\exist Φ:: formula:
-					{o \nin Φ \and o l ?= Φ}
-}}}}
+					{(o l)[:] != Φ[:] \and o l ?= Φ}
+		}} \and
+		{\all i:: nat: o \is operator[i];
+			\exist Φ: 	{(o l)[:] != Φ[:] \and o l ?= Φ} \iff len(l)
+		}}
+}
 asrt {\all i:: nat; 
 		{\all o:: operator[i];
 			{\all l:: (list sym):
