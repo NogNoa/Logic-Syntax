@@ -9,17 +9,16 @@ def {operable:: relation: {\all o:: operator, l::list;
 
 asrt {arity:
 	{\all i:: nat: o \is operator[i];
-		{\all l:: list, n:: nat: = len(l); o operable l \iff
-			n >= i \and l[i..] = (o l)[ε-n+i..]}
+		{\all l:: list; o operable l \iff
+			len(l) >= i \and o l = (o l[..i]) l[i..]} 
 	}
 }
 
-def {precede:: relation[operator]: 
-	{\all i,j:: nat; 
-		{\all o:: operator[i], u:: operator: o precede u; 
-			{\all l:: (list sym);
-				{\all k:: nat: o = l[k];
-					{u l = u l[..k] (o l[k+1..k+i+1]) l[k+i+1..]}}}}}}
+asrt {\all i,j:: nat: i > j;
+	{\all o:: opertor[i], u::operator[j];
+		{\all l::list, k::nat : u = l[k];
+			{o l = o l[..k] (u l[k+1..k+j+1]) l[k+j+1..]}}}}
+/* operator with smaller arity precede operator with bigger arity */
 
 prim nand
 def yes: yes a = a
