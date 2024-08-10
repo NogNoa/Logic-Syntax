@@ -1,21 +1,19 @@
 prim operator, list, formula, ?=, =
 def ():: \all o:: operator, Φ, Ψ:: formula; {(v:: operator: Φ ?= v); o (Φ) Ψ ?= ο v Ψ}
-def {operable:: relation: {\all o:: operator, l::list[operator]; 
+def {operable:: relation: {\all o:: operator, l::list; 
 	{{o operable l} \iff
 	 {\exist Φ:: formula: 
 		{list(o l) != list(Φ) \and
 	     o l ?= Φ}}}
 }}
 
-def {operator:: type: 
-		{\all o:: operator;
-			{\exist l:: (list sym): o operable l} \and
-			{\all i:: nat: o \is operator[i];
-				{\all Φ, l: {list(o l) != list(Φ) \and o l ?= Φ};
-					{len(l) >= i \and list(o l)[i..] = list(Φ)[i..]}}
-			}
-		}
+asrt {arity:
+	{\all i:: nat: o \is operator[i];
+		{\all l:: list, n:: nat: = len(l); o operable l \iff
+			n >= i \and l[i..] = (o l)[ε-n+i..]}
+	}
 }
+
 def {precede:: relation[operator]: 
 	{\all i,j:: nat; 
 		{\all o:: operator[i], u:: operator: o precede u; 
