@@ -1,30 +1,28 @@
-prim operator, list, formula, ?=
-def apply:: function[formula -> formula]: 
+prim operator, list, formula
+def <?=>:: metaoperator[formula -> formula]: 
 	{\all Φ, Ψ:: formula; 
-		apply(Ψ) = Φ \iff {Ψ = Φ} \and list(Ψ) != list(Φ)}
-def ():: \all o:: operator, Φ, Ψ:: formula; {(v:: operator: apply(Φ) = v); apply(o (Φ) Ψ) = ο v Ψ}
-def {operable:: relation: {\all o:: operator, l::list; 
+		{Ψ ?= Φ} \iff {Ψ = Φ \and list(Ψ) != list(Φ)}}
+def ():: \all o:: operator, Φ, Ψ:: formula; {(v:: operator: Φ ?= v); o (Φ) Ψ ?= ο v Ψ}
+def {operable:: relation: {\all o:: operator, l::formula; 
 	{{o operable l} \iff
-	 {\exist Φ:: formula: 
-		{list(o l) != list(Φ) \and
-	     o l ?= Φ}}}
+	 {\exist Φ:: formula: o l ?= Φ}}
 }}
 
 asrt {arity:
 	{\all i:: nat: o \is operator[i];
-		{\all l:: list; o operable l \iff
-			len(l) >= i \and o l ?= (o l[..i]) l[i..] \and o operable l[..i]} 
+		{\all l:: formula; o operable l \iff
+			len(l) >= i \and o l ?= (o l[..i]) l[i..]} 
 	}
 }
 
 asrt {\all i,j:: nat: i > j;
 	{\all o:: opertor[i], u::operator[j];
-		{\all l::list, k::nat : u = l[k];
-			{o l ?= o l[..k] (u l[k+1..k+j+1]) l[k+j+1..]}}}
+		{\all l::formula, k::nat : u = l[k];
+			{o l = o l[..k] (u l[k+1..k+j+1]) l[k+j+1..]}}}
 }	/* operator with smaller arity precede operator with bigger arity */
 
-def pref: pref x y ?= x
-def suff: suff x y ?= y
+def pref: pref x y = x
+def suff: suff x y = y
 def T::operator[2]: {\all x, y; T x y ?= T}
 def not::operator[1]: {\all x; {(not x) != x} \and {not not x ?= x}}
 def F::operator[2]: = not T
