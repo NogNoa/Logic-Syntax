@@ -1,5 +1,8 @@
 prim operator, list, formula, ?=
-def ():: \all o:: operator, Φ, Ψ:: formula; {(v:: operator: Φ ?= v); o (Φ) Ψ ?= ο v Ψ}
+def apply:: function[formula -> formula]: 
+	{\all Φ, Ψ:: formula; 
+		apply(Ψ) = Φ \iff {Ψ = Φ} \and list(Ψ) != list(Φ)}
+def ():: \all o:: operator, Φ, Ψ:: formula; {(v:: operator: apply(Φ) = v); apply(o (Φ) Ψ) = ο v Ψ}
 def {operable:: relation: {\all o:: operator, l::list; 
 	{{o operable l} \iff
 	 {\exist Φ:: formula: 
