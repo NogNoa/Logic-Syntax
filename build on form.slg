@@ -1,32 +1,32 @@
-prim operator, list, formula, =
-def ():: \all o:: operator, Φ, Ψ:: formula; {(v:: operator: Φ = v); o (Φ) Ψ = ο v Ψ}
+prim operator, list, formula, ?=
+def ():: \all o:: operator, Φ, Ψ:: formula; {(v:: operator: Φ ?= v); o (Φ) Ψ ?= ο v Ψ}
 def {operable:: relation: {\all o:: operator, l::list; 
 	{{o operable l} \iff
 	 {\exist Φ:: formula: 
 		{list(o l) != list(Φ) \and
-	     o l = Φ}}}
+	     o l ?= Φ}}}
 }}
 
 asrt {arity:
 	{\all i:: nat: o \is operator[i];
 		{\all l:: list; o operable l \iff
-			len(l) >= i \and o l = (o l[..i]) l[i..] \and o operable l[..i]} 
+			len(l) >= i \and o l ?= (o l[..i]) l[i..] \and o operable l[..i]} 
 	}
 }
 
 asrt {\all i,j:: nat: i > j;
 	{\all o:: opertor[i], u::operator[j];
 		{\all l::list, k::nat : u = l[k];
-			{o l = o l[..k] (u l[k+1..k+j+1]) l[k+j+1..]}}}
+			{o l ?= o l[..k] (u l[k+1..k+j+1]) l[k+j+1..]}}}
 }	/* operator with smaller arity precede operator with bigger arity */
 
-def pref: pref x y = x
-def suff: suff x y = y
-def T::operator[2]: {\all x, y; T x y = T}
-def not::operator[1]: {\all x; {(not x) != x} \and {not not x = x}}
+def pref: pref x y ?= x
+def suff: suff x y ?= y
+def T::operator[2]: {\all x, y; T x y ?= T}
+def not::operator[1]: {\all x; {(not x) != x} \and {not not x ?= x}}
 def F::operator[2]: = not T
 prv {F x y = F|
-	F x y = not T x y = not T = F
+	F x y = not T x y ?= not T ?= F
 }
 prv {not F = T| not F = not not T = T}
 def {nand:
