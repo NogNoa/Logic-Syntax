@@ -1,25 +1,3 @@
-prim operator, list, formula, ?=, =
-def ():: \all o:: operator, Φ, Ψ:: formula; {(v:: operator: Φ ?= v); o (Φ) Ψ ?= ο v Ψ}
-def {operable:: relation: {\all o:: operator, l::list; 
-	{{o operable l} \iff
-	 {\exist Φ:: formula: 
-		{list(o l) != list(Φ) \and
-	     o l ?= Φ}}}
-}}
-
-asrt {arity:
-	{\all i:: nat: o \is operator[i];
-		{\all l:: list; o operable l \iff
-			len(l) >= i \and o l = (o l[..i]) l[i..]} 
-	}
-}
-
-asrt {\all i,j:: nat: i > j;
-	{\all o:: opertor[i], u::operator[j];
-		{\all l::list, k::nat : u = l[k];
-			{o l = o l[..k] (u l[k+1..k+j+1]) l[k+j+1..]}}}}
-/* operator with smaller arity precede operator with bigger arity */
-
 prim nand
 def yes: yes a = a
 def not: not a ?= nand a a
