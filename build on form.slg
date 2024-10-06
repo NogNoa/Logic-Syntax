@@ -29,7 +29,14 @@ def F::operator[2]: = not T
 prv {F x y = F|
 	F x y = not T x y ?= not T ?= F
 }
-prv {not F = T| not F = not not T = T}
+prv {\all a,b: b = not a; a = not b|
+	not b = not not a = a
+}
+cor {not F = T}
+def {iff:
+	iff x x = T \and
+	iff x not x = F 
+}
 def {nand:
 	nand x x = not x
 	nand x not x = T
@@ -90,7 +97,8 @@ prv {x, y: x y = yes; not morg = x neg y}
 
 prv {morg x neg = not x | morg x neg = not x neg neg}
 prv {morg neg = not| morg neg = not neg neg = not}
-
+prv {not morg neg = yes| not morg neg = not not}
+prv {neg morg morg = not morg not morg = not (morg (not morg)) = not (not (not morg) neg) = (not not) (not morg neg) = yes yes} 
 def nor: = morg nand
 prv {nor = not or| not or = not nand neg = morg nand}
 prv {nor = and neg| and neg = not nand neg}
