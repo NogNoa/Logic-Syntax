@@ -104,4 +104,17 @@ prv {nor = not or| not or = not nand neg = morg nand}
 prv {nor = and neg| and neg = not nand neg}
 
 
- 
+ xor a b = nand nand a nand a b nand b nand a b
+ = nand if a b then a b
+ iff a b = and if a b then a b
+ or iff a b not then a b = if a b
+if a b = nand a nand a b
+
+pref/suff - first/second <-> same/different
+iff/xor - same/different <-> T/F
+and/or/nand/nor - same/different+T/F <-> T/F
+if/then/nif/nthen - first/second+T/f <-> T/F
+
+and a b = iff iff a b a = iff iff a b b
+{iff iff a a a = iff T a}
+{iff iff a not a a = iff F a}
