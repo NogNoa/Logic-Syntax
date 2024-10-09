@@ -112,10 +112,59 @@ if a b = nand a nand a b
 
 pref/suff - first/second <-> same/different
 iff/xor - same/different <-> T/F
-and/or/nand/nor - same/different+T/F <-> T/F
-if/then/nif/nthen - first/second+T/F <-> T/F
+and/or/nand/nor - same:T/F <-> T/F
+if/then/nif/nthen - different:T/F <-> T/F
 
 and a b = iff iff iff a b a b
 {iff iff iff a a a a = iff iff T a a}
 {iff iff iff F F F F = iff iff T F F = iff F F = T}
 {iff iff F F T = iff T T}
+
+iff iff a b a = b
+T T T
+T F F
+F T T
+F F F
+
+iff iff a b T = iff = iff T iff a b
+T T T
+T F F
+F T F
+F F T
+
+iff xor a b iff a b = F
+T T T
+T F F
+F T F
+F F T
+
+iff iff a b a = iff iff suff (b a) (b a)
+
+iff iff pref plex = suff
+iff iff suff plex = pref
+iff T iff plex = iff
+iff F iff plex = xor
+iff xor iff plex = F
+iff iff iff plex = T
+pref x y plex = x
+suff x y plex = y
+ 
+if = or pref iff plex
+
+and/or/nor/nand one of them has to be premitive
+
+
+base 	neg 	morg	switch
+T	  	T	  	F		T
+pref	npref	pref	suff
+iff		iff		xor		iff
+nand  	or 		nor		nand
+if		then	nthen	then
+
+if = xor suff npref plex
+
+xor suff a b npref a b = xor b not a = xor
+xor T not T = xor T F = T
+xor T not F = F
+xor F not T = F
+xor F not F = T
