@@ -113,8 +113,9 @@ if a b = nand a nand a b
 pref/suff - first/second <-> same/different
 iff/xor - same/different <-> T/F
 and/or/nand/nor - same/different+T/F <-> T/F
-if/then/nif/nthen - first/second+T/f <-> T/F
+if/then/nif/nthen - first/second+T/F <-> T/F
 
-and a b = iff iff a b T
-{iff iff a a T = iff T T}
+and a b = iff iff iff a b a b
+{iff iff iff a a a a = iff iff T a a}
+{iff iff iff F F F F = iff iff T F F = iff F F = T}
 {iff iff F F T = iff T T}
