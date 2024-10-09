@@ -115,6 +115,6 @@ iff/xor - same/different <-> T/F
 and/or/nand/nor - same/different+T/F <-> T/F
 if/then/nif/nthen - first/second+T/f <-> T/F
 
-and a b = iff iff a b a = iff iff a b b
-{iff iff a a a = iff T a}
-{iff iff a not a a = iff F a}
+and a b = iff iff a b T
+{iff iff a a T = iff T T}
+{iff iff F F T = iff T T}
