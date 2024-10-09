@@ -161,10 +161,17 @@ iff		iff		xor		iff
 nand  	or 		nor		nand
 if		then	nthen	then
 
-if = xor suff npref plex
+xor suff npref plex
 
 xor suff a b npref a b = xor b not a = xor
 xor T not T = xor T F = T
 xor T not F = F
 xor F not T = F
 xor F not F = T
+
+iff pref xor plex=
+iff pref a b xor a b = iff a xor a b
+iff T xor T T = iff T F = F
+iff T xor T F = iff T T = T
+
+and/or/nor/nand one of them has to be premitive. we can't build 3/1 from 2/2 (and 4/0)
