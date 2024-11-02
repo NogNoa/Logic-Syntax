@@ -101,10 +101,9 @@ prv {not morg neg = yes| not morg neg = not not}
 prv {neg morg morg = yes|
 		 neg morg morg =
 		 not morg not morg =
-		 not (morg (not morg)) =
-		 not (not (not morg) neg) =
-		 (not not) (not morg neg) =
-		 yes yes
+		 not morg (not morg) =
+		 (not morg) neg =
+		 neg neg
 }
 def nor: = morg nand
 prv {nor = not or| not or = not nand neg = morg nand}
