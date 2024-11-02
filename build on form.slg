@@ -1,9 +1,9 @@
 prim operator, list, formula
-def <?=>:: metaoperator[formula -> formula]: 
-	{\all Φ, Ψ:: formula; 
+def <?=>:: metaoperator[formula -> formula]:
+	{\all Φ, Ψ:: formula;
 		{Ψ ?= Φ} \iff {Ψ = Φ \and list(Ψ) != list(Φ)}}
 def ():: \all o:: operator, Φ, Ψ:: formula; {(v:: operator: Φ ?= v); o (Φ) Ψ ?= ο v Ψ}
-def {operable:: relation: {\all o:: operator, l::formula; 
+def {operable:: relation: {\all o:: operator, l::formula;
 	{{o operable l} \iff
 	 {\exist Φ:: formula: o l ?= Φ}}
 }}
@@ -11,7 +11,7 @@ def {operable:: relation: {\all o:: operator, l::formula;
 asrt {arity:
 	{\all i:: nat: o \is operator[i];
 		{\all l:: formula; o operable l \iff
-			len(l) >= i \and o l ?= (o l[..i]) l[i..]} 
+			len(l) >= i \and o l ?= (o l[..i]) l[i..]}
 	}
 }
 
@@ -35,7 +35,7 @@ prv {\all a,b: b = not a; a = not b|
 cor {not F = T}
 def {iff:
 	iff x x = T \and
-	iff x not x = F 
+	iff x not x = F
 }
 def {nand:
 	nand x x = not x
@@ -45,7 +45,7 @@ asrt {not precede nand}
 prv {nand not x x = T|
 	(nand not x x)(x | not x) =
 	nand not not x not x =
-	nand x not x = 
+	nand x not x =
 	T
 }
 prv {
@@ -70,7 +70,7 @@ prv {neg neg = yes|
 
 def or: = nand neg
 prv {or x x = x|
-	or x x = 
+	or x x =
 	nand neg x x =
 	nand not x not x =
 	nand (not x) (not x) =
@@ -92,8 +92,8 @@ prv {x, y: x y = yes; not morg = x neg y}
 	not morg = not neg not
 	not morg a b c = not not a neg b c = a not b not c
 	not neg not a b c = not a not b c
-	
-	
+
+
 
 prv {morg x neg = not x | morg x neg = not x neg neg}
 prv {morg neg = not| morg neg = not neg neg = not}
@@ -155,7 +155,7 @@ iff xor iff plex = F
 iff iff iff plex = T
 pref x y plex = x
 suff x y plex = y
- 
+
 if = or pref iff plex
 
 and/or/nor/nand one of them has to be premitive
