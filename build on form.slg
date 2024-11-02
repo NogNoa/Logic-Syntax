@@ -19,10 +19,10 @@ asrt {\all i,j:: nat: i > j;
 	{\all o:: opertor[i], u::operator[j];
 		{\all l::formula, k::nat : u = l[k];
 			{o l = o l[..k] (u l[k+1..k+j+1]) l[k+j+1..]}}}
-}	/* operator with smaller arity precede operator with bigger arity */
+}	/* operator with smaller arity precede operator with bigger arity *//
 
-def pref: pref x y = x
-def suff: suff x y = y
+def pref::operator[2]: pref x y = x
+def suff::operator[2]: suff x y = y
 def T::operator[2]: {\all x, y; T x y ?= T}
 def not::operator[1]: {\all x; {(not x) != x} \and {not not x ?= x}}
 def F::operator[2]: = not T
@@ -98,7 +98,14 @@ prv {x, y: x y = yes; not morg = x neg y}
 prv {morg x neg = not x | morg x neg = not x neg neg}
 prv {morg neg = not| morg neg = not neg neg = not}
 prv {not morg neg = yes| not morg neg = not not}
-prv {neg morg morg = not morg not morg = not (morg (not morg)) = not (not (not morg) neg) = (not not) (not morg neg) = yes yes} 
+prv {neg morg morg = yes|
+		 neg morg morg =
+		 not morg not morg =
+		 not (morg (not morg)) =
+		 not (not (not morg) neg) =
+		 (not not) (not morg neg) =
+		 yes yes
+}
 def nor: = morg nand
 prv {nor = not or| not or = not nand neg = morg nand}
 prv {nor = and neg| and neg = not nand neg}
@@ -175,3 +182,12 @@ iff T xor T T = iff T F = F
 iff T xor T F = iff T T = T
 
 and/or/nor/nand one of them has to be premitive. we can't build 3/1 from 2/2 (and 4/0)
+
+and a a = a
+and a not a = f
+
+nand a a = not a
+and a not a = t
+
+or a a = a
+and a not a = t
