@@ -1,3 +1,4 @@
+/* operators */
 prim operator, list, formula
 def <?=>:: metaoperator[formula -> formula]:
 	{\all Φ, Ψ:: formula;
@@ -16,13 +17,27 @@ asrt {arity:
 }
 
 asrt {\all i,j:: nat: i > j;
-	{\all o:: opertor[i], u::operator[j];
+	{\all o:: operator[i], u::operator[j];
 		{\all l::formula, k::nat : u = l[k];
 			{o l = o l[..k] (u l[k+1..k+j+1]) l[k+j+1..]}}}
 }	/* operator with smaller arity precede operator with bigger arity *//
 
+asrt {\all i::nat;
+    {\all o,u::operator[i];
+        {\all l::formula[2*i-1];
+            {o u l = o (u l[..i]) l[i..]}}}
+} /* left precedance for same arity */
+
+/* purely formal operators */
+
 def pref::operator[2]: pref x y = x
 def suff::operator[2]: suff x y = y
+
+prv {pref suff a b c = b| pref suff a b c = pref b c}
+prv {suff pref a b c = c| suff pref a b c = suff a c}
+
+/* basic logical operators */
+
 def T::operator[2]: {\all x, y; T x y ?= T}
 def not::operator[1]: {\all x; {(not x) != x} \and {not not x ?= x}}
 def F::operator[2]: = not T
@@ -33,15 +48,28 @@ prv {\all a,b: b = not a; a = not b|
 	not b = not not a = a
 }
 cor {not F = T}
+
+/* iff/xor group */
 def {iff:
 	iff x x = T \and
 	iff x not x = F
 }
+
+def neg: neg x y = not x not y
+prv {neg neg = yes|
+	neg neg x y =
+	neg not x not y =
+	neg (not x) (not y) =
+	x y =
+	yes x y
+}
+
+/* and/or group */
+
 def {nand:
 	nand x x = not x
 	nand x not x = T
 }
-asrt {not precede nand}
 prv {nand not x x = T|
 	(nand not x x)(x | not x) =
 	nand not not x not x =
@@ -57,16 +85,6 @@ prv {
 def and: = not nand
 col {and x x = x
 	and x not x = F}
-
-def neg: neg x y = not x not y
-asrt {not precede neg}
-prv {neg neg = yes|
-	neg neg x y =
-	neg not x not y =
-	neg (not x) (not y) =
-	x y =
-	yes x y
-}
 
 def or: = nand neg
 prv {or x x = x|
@@ -109,6 +127,10 @@ def nor: = morg nand
 prv {nor = not or| not or = not nand neg = morg nand}
 prv {nor = and neg| and neg = not nand neg}
 
+
+def plex: {x,y:: operator[2]; x y plex a b = x a b y a b}
+
+*********
 
  xor a b = nand nand a nand a b nand b nand a b
  = nand if a b then a b
