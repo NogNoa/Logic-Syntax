@@ -49,6 +49,9 @@ prv {\all a,b: b = not a; a = not b|
 }
 cor {not F = T}
 
+form npref ?= not pref
+form nsuff ?= not suff
+
 /* neg and morg */
 def neg: neg x y = not x not y
 prv {neg neg = yes|
@@ -82,6 +85,12 @@ prv {neg morg morg = yes|
 prv {\all o: \in '{pref, suff}; o neg = not o|
     {pref neg x y = pref (not x) (not y) = not x = not pref x y}
     {suff neg x y = suff (not x) (not y) = not y = not suff x y}
+}
+
+prv {\all o: \in '{pref, suff}; morg o = o|
+    {\all o; morg o = not o neg} \and
+    {\all o: \in '{pref, suff}; o neg = not o} \trfr
+    {morg o = not not o = o}
 }
 
 /* iff/xor group */
