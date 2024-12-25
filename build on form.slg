@@ -30,11 +30,11 @@ asrt {\all i::nat;
 
 /* purely formal operators */
 
-def pref::operator[2]: pref x y = x
-def suff::operator[2]: suff x y = y
+def pref::operator[2]: \all l::formula[2]; pref l ?= l[0]
+def suff::operator[2]: \all l::formula[2]; pref l ?= l[1]
 
-prv {pref suff a b c = b| pref suff a b c = pref b c}
-prv {suff pref a b c = c| suff pref a b c = suff a c}
+prv {\all l:formula[3]; pref suff l ?= l[1]| pref suff a b c ?= pref b c ?= b}
+prv {\all l:formula[3]; suff pref l ?= l[2]| suff pref a b c ?= suff a c ?= c}
 
 /* basic logical operators */
 
@@ -49,12 +49,7 @@ prv {\all a,b: b = not a; a = not b|
 }
 cor {not F = T}
 
-/* iff/xor group */
-def {iff:
-	iff x x = T \and
-	iff x not x = F
-}
-
+/* neg and morg */
 def neg: neg x y = not x not y
 prv {neg neg = yes|
 	neg neg x y =
@@ -62,6 +57,45 @@ prv {neg neg = yes|
 	neg (not x) (not y) =
 	x y =
 	yes x y
+}
+
+def morg: morg x = not x neg
+
+prv {not morg x = x neg | not morg x = not not x neg}
+prv {x, y: x y = yes; not morg = x neg y}
+	not morg = not neg not
+	not morg a b c = not not a neg b c = a not b not c
+	not neg not a b c = not a not b c
+
+
+prv {morg x neg = not x | morg x neg = not x neg neg}
+prv {morg neg = not| morg neg = not neg neg = not}
+prv {not morg neg = yes| not morg neg = not not}
+prv {neg morg morg = yes|
+		 neg morg morg =
+		 not morg not morg =
+		 not morg (not morg) =
+		 (not morg) neg =
+		 neg neg
+}
+
+prv {\all o: \in '{pref, suff}; o neg = not o|
+    {pref neg x y = pref (not x) (not y) = not x = not pref x y}
+    {suff neg x y = suff (not x) (not y) = not y = not suff x y}
+}
+
+/* iff/xor group */
+def {iff:
+	iff x x = T \and
+	iff x not x = F
+}
+
+def {xor: = not iff}
+
+prv {\all o: \in '{iff, xor}; o neg = o|
+    {iff neg x x = iff (not x) (not x) = T = iff x x}
+    {iff neg x not x = iff (not x) not (not x) = F = iff x not x}
+    {\all x y: iff x y = iff neg x Y; not (iff x y) = not (iff neg x Y)}
 }
 
 /* and/or group */
@@ -103,26 +137,7 @@ prv {or x not x = T|
 	T
 }
 
-def morg: morg x = not x neg
 
-prv {not morg x = x neg | not morg x = not not x neg}
-prv {x, y: x y = yes; not morg = x neg y}
-	not morg = not neg not
-	not morg a b c = not not a neg b c = a not b not c
-	not neg not a b c = not a not b c
-
-
-
-prv {morg x neg = not x | morg x neg = not x neg neg}
-prv {morg neg = not| morg neg = not neg neg = not}
-prv {not morg neg = yes| not morg neg = not not}
-prv {neg morg morg = yes|
-		 neg morg morg =
-		 not morg not morg =
-		 not morg (not morg) =
-		 (not morg) neg =
-		 neg neg
-}
 def nor: = morg nand
 prv {nor = not or| not or = not nand neg = morg nand}
 prv {nor = and neg| and neg = not nand neg}
