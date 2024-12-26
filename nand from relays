@@ -23,7 +23,9 @@ def neg = λ a. not a not
 
 def or a b = not and neg = not not nand neg = nand neg
 
-nif = nand b nand a b 
-nthen = nand a nand a b 
+nif = λ a b. nand b nand a b
+nthen = λ a. nand a nand a 
 
-def xor a b = nand nthen nif
+def duplex = λ a b c. b c a b c
+
+def xor a b = nand nthen deplex nif
