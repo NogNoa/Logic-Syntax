@@ -23,4 +23,7 @@ def neg = λ a. not a not
 
 def or a b = not and neg = not not nand neg = nand neg
 
-def xor a b = nand nand a nand a b nand b nand a b 
+nif = nand b nand a b 
+nthen = nand a nand a b 
+
+def xor a b = nand nthen nif
