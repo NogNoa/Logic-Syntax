@@ -1,0 +1,26 @@
+def I = λ a. a
+def O = λ a. 0
+def electromagnet = λ {0. I; 1. (λ {I. O; O. I}}
+def default-on = λ a. electromagnet a I
+def default-off = λ a. electromagnet a O
+
+def nand a b = default-on default-off a b 1
+
+default-on default-off a b 1 = 
+default-on electromagnet a O b 1 =
+default-on (O|I) b 1 =
+default-on (0|0|0|1) 1 =
+electromagnet (0|0|0|1) I 1 =
+(I|I|I|O) 1 =
+(1|1|1|0)
+
+def dup = λ a. a a
+def not = nand dup
+
+def and = not nand
+
+def neg = λ a. not a not
+
+def or a b = not and neg = not not nand neg = nand neg
+
+def xor a b = nand nand a nand a b nand b nand a b 

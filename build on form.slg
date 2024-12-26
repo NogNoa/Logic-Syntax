@@ -82,9 +82,10 @@ prv {neg morg morg = yes|
 		 neg neg
 }
 
-prv {\all o: \in '{pref, suff}; o neg = not o|
+prv {\all o: \in '{pref, suff, npref, nsuff}; o neg = not o|
     {pref neg x y = pref (not x) (not y) = not x = not pref x y}
     {suff neg x y = suff (not x) (not y) = not y = not suff x y}
+    {\all o: o neg = not o; (not o) neg a b = (not o) not a not b = not (not o)
 }
 
 prv {\all o: \in '{pref, suff}; morg o = o|
