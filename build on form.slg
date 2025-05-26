@@ -23,18 +23,18 @@ asrt {\all i,j:: nat: i > j;
 
 def pref: pref x y = x
 def suff: suff x y = y
-def T::operator[2]: {\all x, y; T x y ?= T}
-def not::operator[1]: {\all x; {(not x) != x} \and {not not x ?= x}}
+def T::operator[2]: {\all x, y; T x y = T}
+def not::operator[1]: {\all x; {(not x) != x} \and {not not x = x}}
+asrt {\all x; \exist (not x)}
 def F::operator[2]: = not T
 prv {F x y = F|
-	F x y = not T x y ?= not T ?= F
+	F x y = not T x y = not T = F
 }
 prv {not F = T| not F = not not T = T}
-def {nand:
-	nand x x = not x
-	nand x not x = T
+def {nand::operator[2]: \all x;
+	{nand x x = not x \and
+	 nand x not x = T}
 }
-asrt {not precede nand}
 prv {nand not x x = T|
 	(nand not x x)(x | not x) =
 	nand not not x not x =
