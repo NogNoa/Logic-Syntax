@@ -1,9 +1,10 @@
+/* operators */
 prim operator, list, formula
-def <?=>:: metaoperator[formula -> formula]: 
-	{\all Φ, Ψ:: formula; 
+def <?=>:: metaoperator[formula -> formula]:
+	{\all Φ, Ψ:: formula;
 		{Ψ ?= Φ} \iff {Ψ = Φ \and list(Ψ) != list(Φ)}}
 def ():: \all o:: operator, Φ, Ψ:: formula; {(v:: operator: Φ ?= v); o (Φ) Ψ ?= ο v Ψ}
-def {operable:: relation: {\all o:: operator, l::formula; 
+def {operable:: relation: {\all o:: operator, l::formula;
 	{{o operable l} \iff
 	 {\exist Φ:: formula: o l ?= Φ}}
 }}
@@ -11,34 +12,113 @@ def {operable:: relation: {\all o:: operator, l::formula;
 asrt {arity:
 	{\all i:: nat: o \is operator[i];
 		{\all l:: formula; o operable l \iff
-			len(l) >= i \and o l ?= (o l[..i]) l[i..]} 
+			len(l) >= i \and o l ?= (o l[..i]) l[i..]}
 	}
 }
 
 asrt {\all i,j:: nat: i > j;
-	{\all o:: opertor[i], u::operator[j];
+	{\all o:: operator[i], u::operator[j];
 		{\all l::formula, k::nat : u = l[k];
 			{o l = o l[..k] (u l[k+1..k+j+1]) l[k+j+1..]}}}
-}	/* operator with smaller arity precede operator with bigger arity */
+}	/* operator with smaller arity precede operator with bigger arity *//
 
-def pref: pref x y = x
-def suff: suff x y = y
-def T::operator[2]: {\all x, y; T x y = T}
-def not::operator[1]: {\all x; {(not x) != x} \and {not not x = x}}
+asrt {\all i::nat;
+    {\all o,u::operator[i];
+        {\all l::formula[2*i-1];
+            {o u l = o (u l[..i]) l[i..]}}}
+} /* left precedance for same arity */
+
+/* purely formal operators */
+
+def pref::operator[2]: \all l::formula[2]; pref l ?= l[0]
+def suff::operator[2]: \all l::formula[2]; pref l ?= l[1]
+
+prv {\all l:formula[3]; pref suff l ?= l[1]| pref suff a b c ?= pref b c ?= b}
+prv {\all l:formula[3]; suff pref l ?= l[2]| suff pref a b c ?= suff a c ?= c}
+
+/* basic logical operators */
+
+def T::operator[2]: {\all x, y; T x y ?= T}
+def not::operator[1]: {\all x; {(not x) != x} \and {not not x ?= x}}
 asrt {\all x; \exist (not x)}
 def F::operator[2]: = not T
 prv {F x y = F|
 	F x y = not T x y = not T = F
 }
-prv {not F = T| not F = not not T = T}
-def {nand::operator[2]: \all x;
+prv {\all a,b: b = not a; a = not b|
+	not b = not not a = a
+}
+cor {not F = T}
+
+form npref ?= not pref
+form nsuff ?= not suff
+
+/* neg and morg */
+def neg: neg x y = not x not y
+prv {neg neg = yes|
+	neg neg x y =
+	neg not x not y =
+	neg (not x) (not y) =
+	x y =
+	yes x y
+}
+
+def morg: morg x = not x neg
+
+prv {not morg x = x neg | not morg x = not not x neg}
+prv {x, y: x y = yes; not morg = x neg y}
+	not morg = not neg not
+	not morg a b c = not not a neg b c = a not b not c
+	not neg not a b c = not a not b c
+
+
+prv {morg x neg = not x | morg x neg = not x neg neg}
+prv {morg neg = not| morg neg = not neg neg = not}
+prv {not morg neg = yes| not morg neg = not not}
+prv {neg morg morg = yes|
+		 neg morg morg =
+		 not morg not morg =
+		 not morg (not morg) =
+		 (not morg) neg =
+		 neg neg
+}
+
+prv {\all o: \in '{pref, suff, npref, nsuff}; o neg = not o|
+    {pref neg x y = pref (not x) (not y) = not x = not pref x y}
+    {suff neg x y = suff (not x) (not y) = not y = not suff x y}
+    {\all o: o neg = not o; (not o) neg a b = (not o) not a not b = not (not o)
+}
+
+prv {\all o: \in '{pref, suff}; morg o = o|
+    {\all o; morg o = not o neg} \and
+    {\all o: \in '{pref, suff}; o neg = not o} \trfr
+    {morg o = not not o = o}
+}
+
+/* iff/xor group */
+def {iff:
+	iff x x = T \and
+	iff x not x = F
+}
+
+def {xor: = not iff}
+
+prv {\all o: \in '{iff, xor}; o neg = o|
+    {iff neg x x = iff (not x) (not x) = T = iff x x}
+    {iff neg x not x = iff (not x) not (not x) = F = iff x not x}
+    {\all x y: iff x y = iff neg x Y; not (iff x y) = not (iff neg x Y)}
+}
+
+/* and/or group */
+
+def {nand:: operator[2]: \all x;
 	{nand x x = not x \and
 	 nand x not x = T}
 }
 prv {nand not x x = T|
 	(nand not x x)(x | not x) =
 	nand not not x not x =
-	nand x not x = 
+	nand x not x =
 	T
 }
 prv {
@@ -51,19 +131,9 @@ def and: = not nand
 col {and x x = x
 	and x not x = F}
 
-def neg: neg x y = not x not y
-asrt {not precede neg}
-prv {neg neg = yes|
-	neg neg x y =
-	neg not x not y =
-	neg (not x) (not y) =
-	x y =
-	yes x y
-}
-
 def or: = nand neg
 prv {or x x = x|
-	or x x = 
+	or x x =
 	nand neg x x =
 	nand not x not x =
 	nand (not x) (not x) =
@@ -78,22 +148,93 @@ prv {or x not x = T|
 	T
 }
 
-def morg: morg x = not x neg
-
-prv {not morg x = x neg | not morg x = not not x neg}
-prv {x, y: x y = yes; not morg = x neg y}
-	not morg = not neg not
-	not morg a b c = not not a neg b c = a not b not c
-	not neg not a b c = not a not b c
-	
-	
-
-prv {morg x neg = not x | morg x neg = not x neg neg}
-prv {morg neg = not| morg neg = not neg neg = not}
 
 def nor: = morg nand
 prv {nor = not or| not or = not nand neg = morg nand}
 prv {nor = and neg| and neg = not nand neg}
 
 
- 
+def plex: {x,y:: operator[2]; x y plex a b = x a b y a b}
+
+*********
+
+ xor a b = nand nand a nand a b nand b nand a b
+ = nand if a b then a b
+ iff a b = and if a b then a b
+ or iff a b not then a b = if a b
+if a b = nand a nand a b
+
+pref/suff - first/second <-> same/different
+iff/xor - same/different <-> T/F
+and/or/nand/nor - same:T/F <-> T/F
+if/then/nif/nthen - different:T/F <-> T/F
+
+and a b = iff iff iff a b a b
+{iff iff iff a a a a = iff iff T a a}
+{iff iff iff F F F F = iff iff T F F = iff F F = T}
+{iff iff F F T = iff T T}
+
+iff iff a b a = b
+T T T
+T F F
+F T T
+F F F
+
+iff iff a b T = iff = iff T iff a b
+T T T
+T F F
+F T F
+F F T
+
+iff xor a b iff a b = F
+T T T
+T F F
+F T F
+F F T
+
+iff iff a b a = iff iff suff (b a) (b a)
+
+iff iff pref plex = suff
+iff iff suff plex = pref
+iff T iff plex = iff
+iff F iff plex = xor
+iff xor iff plex = F
+iff iff iff plex = T
+pref x y plex = x
+suff x y plex = y
+
+if = or pref iff plex
+
+and/or/nor/nand one of them has to be premitive
+
+
+base 	neg 	morg	switch
+T	  	T	  	F		T
+pref	npref	pref	suff
+iff		iff		xor		iff
+nand  	or 		nor		nand
+if		then	nthen	then
+
+xor suff npref plex
+
+xor suff a b npref a b = xor b not a = xor
+xor T not T = xor T F = T
+xor T not F = F
+xor F not T = F
+xor F not F = T
+
+iff pref xor plex=
+iff pref a b xor a b = iff a xor a b
+iff T xor T T = iff T F = F
+iff T xor T F = iff T T = T
+
+and/or/nor/nand one of them has to be premitive. we can't build 3/1 from 2/2 (and 4/0)
+
+and a a = a
+and a not a = f
+
+nand a a = not a
+and a not a = t
+
+or a a = a
+and a not a = t

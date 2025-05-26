@@ -1,0 +1,8 @@
+,FF,TF,FT,TT
+A,F,T,F,T
+B,F,F,T,T
+nA,T,F,T,F
+nB,T,T,F,F
+iff,T,F,F,T
+xor,F,T,T,F
+iff A xor,T,F,F,F
